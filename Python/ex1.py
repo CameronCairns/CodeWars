@@ -16,8 +16,16 @@
 # string with a space between the first and last name i.e. Jane Doe
 def find_employees_role(name):
     #your code here
-    names = name.split()
+    # Split the name into first and last
+    # for easier comparison
+    names = name.split(' ')
+    if len(names) != 2:
+    	# Improper Format need first name and last
+    	return 'Does not work here!'
     for employee in employees:
+    	# Check for last name first since that is less likely
+        # to have duplicates than the first name (unless its a family busines...)
         if(employee['last_name'] == names[1] and employee['first_name'] == names[0]):
             return employee['role']
+    # for loop exited without finding a match so return the fail case
     return 'Does not work here!'
